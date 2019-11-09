@@ -30,8 +30,8 @@ def add(numbers):
       r = '1' + r
       carry = 1
     i -= 1
-
   return r
+
 # two's compliment
 def two_compliment(num):
 	l = list(num.strip(""))
@@ -87,3 +87,4 @@ def multiply(num1, num2):
 	return [final, ans]
 
 #print(multiply(2, 3))
+

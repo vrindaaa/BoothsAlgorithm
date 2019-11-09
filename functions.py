@@ -7,6 +7,14 @@ def rightShift(numbers):
 
   return [newA,newB,newC]
 
+def leftShift(numbers):
+  a,b = numbers
+
+  newA = a[1:] + b[0]
+  newB = b[1:] + '0'
+
+  return [newA, newB]
+
 def add(numbers):
   a,b = numbers
 

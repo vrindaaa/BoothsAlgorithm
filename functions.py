@@ -19,16 +19,16 @@ def add(numbers):
     n = int(a[i]) + int(b[i]) + carry
     if n == 0:
       r = '0' + r
-      c = 0
+      carry = 0
     elif  n == 1:
       r = '1' + r
-      c = 0
+      carry = 0
     elif n == 2:
       r = '0' + r
-      c = 1
+      carry = 1
     elif n == 3:
       r = '1' + r
-      c = 1
+      carry = 1
     i -= 1
 
   return r

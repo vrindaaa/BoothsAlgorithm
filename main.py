@@ -7,6 +7,14 @@ def rightShift(numbers):
 
   return [newA,newB,newC]
 
+def leftShift(numbers):
+  a,b = numbers
+
+  newA = a[1:] + b[0]
+  newB = b[1:] + '0'
+
+  return [newA, newB]
+
 def add(numbers):
   a,b = numbers
 
@@ -87,3 +95,59 @@ def multiply(num1, num2):
 		final = -1*int(two_compliment(ans), 2)
 	return [final, ans]
 
+def divide(num1, num2):
+	#num1/num2
+	rem_neg = False
+	compliment_quotient = False
+	dividend = binary(num1)
+	divisor = binary(num2)
+	if(num1<0):
+		dividend = two_compliment(dividend)
+		rem_neg = True
+	if(num2<0):
+		divisor = two_compliment(divisor)
+	if(num1*num2<0):
+		compliment_quotient = True
+	if(num2==0):
+		print("Error -> Division by 0.")
+		return
+	divisor_neg = two_compliment(divisor)
+	acc = "0"*12
+	sc = 12
+	while(sc>0):
+		acc, dividend = leftShift([acc, dividend])
+		acc_old = acc
+		acc = add([acc, divisor_neg])
+		if(acc[0]=="0"):
+			dividend = dividend[:-1] + "1"
+		else:
+			acc = acc_old
+		sc-=1
+	rem = acc
+	quotient = dividend
+	if(rem_neg):
+		rem = two_compliment(rem)
+	if(compliment_quotient):
+		quotient = two_compliment(quotient)
+	if(quotient[0]=="1"):
+		ans = -1*(int(two_compliment(quotient), 2))
+	else:
+		ans = int(quotient, 2)
+	if(rem[0]=="1"):
+		ans2 = -1*(int(two_compliment(rem), 2))
+	else:
+		ans2 = int(rem, 2)
+	return [ans, ans2]
+for i in range(-1000, 1000):
+	for j in range(-1000, 1000):
+		if(j!=0):
+			a, b = divide(i, j)
+			if(i!=((j*a)+b)):
+				print("FAILED ", i, j)
+				exit()
+			else:
+				print("DIVIDE OK", i, j)
+		if((i*j)!=multiply(i, j)[0]):
+			print("MULTIPLY FAILED", i, j)
+		else:
+			print("MULTIPLY OK", i, j)

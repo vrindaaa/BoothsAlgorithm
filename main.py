@@ -87,5 +87,3 @@ def multiply(num1, num2):
 		final = -1*int(two_compliment(ans), 2)
 	return [final, ans]
 
-#print(multiply(2, 3))
-

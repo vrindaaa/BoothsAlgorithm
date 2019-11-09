@@ -138,16 +138,17 @@ def divide(num1, num2):
 	else:
 		ans2 = int(rem, 2)
 	return [ans, ans2]
-for i in range(-1000, 1000):
-	for j in range(-1000, 1000):
-		if(j!=0):
-			a, b = divide(i, j)
-			if(i!=((j*a)+b)):
-				print("FAILED ", i, j)
-				exit()
+def check():
+	for i in range(-1000, 1000):
+		for j in range(-1000, 1000):
+			if(j!=0):
+				a, b = divide(i, j)
+				if(i!=((j*a)+b)):
+					print("FAILED ", i, j)
+					exit()
+				else:
+					print("DIVIDE OK", i, j)
+			if((i*j)!=multiply(i, j)[0]):
+				print("MULTIPLY FAILED", i, j)
 			else:
-				print("DIVIDE OK", i, j)
-		if((i*j)!=multiply(i, j)[0]):
-			print("MULTIPLY FAILED", i, j)
-		else:
-			print("MULTIPLY OK", i, j)
+				print("MULTIPLY OK", i, j)

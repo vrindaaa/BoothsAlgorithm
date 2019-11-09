@@ -137,7 +137,8 @@ def divide(num1, num2):
 		ans2 = -1*(int(two_compliment(rem), 2))
 	else:
 		ans2 = int(rem, 2)
-	return [ans, ans2]
+	return [ans, ans2, quotient, rem]
+
 def check():
 	for i in range(-1000, 1000):
 		for j in range(-1000, 1000):
@@ -152,3 +153,14 @@ def check():
 				print("MULTIPLY FAILED", i, j)
 			else:
 				print("MULTIPLY OK", i, j)
+
+print("Enter two Numbers")
+a, b = map(int, input().split())
+file=open("output.txt","w+")
+file.write("Two numbers are "+str(a)+" " + str(b)+"\n")
+temp = multiply(a, b)
+temp2 = divide(a, b)
+file.write("Multiplication Answer: "+str(temp[0])+" Binary: "+str(temp[1])+"\n")
+file.write("Division Answer: Quotient " + str(temp2[0]) +" Remainder: "+str(temp2[1])+"\n")
+file.write("Binary: "+temp2[2]+" "+temp2[3]+"\n")
+file.close()

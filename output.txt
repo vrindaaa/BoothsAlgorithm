@@ -1,4 +1,4 @@
-Two numbers are 100 -15
+Two numbers are -15 100
 Multiplication Answer: -1500 Binary: 111111111111101000100100
-Division Answer: Quotient -6 Remainder: 10
-Binary: 111111111010 000000001010
+Division Answer: Quotient 0 Remainder: -15
+Binary: 000000000000 111111110001

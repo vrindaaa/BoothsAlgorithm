@@ -74,21 +74,21 @@ def binary(num):
 		return(two_compliment(binary(-1*num)))
 
 def multiply(num1, num2):
-	one = binary(num1)
-	two = binary(num2)
-	two_comp = two_compliment(two)
+	q = binary(num1) #one
+	m = binary(num2) #two
+	m_comp = two_compliment(m) #two_comp
 	ac = "0"*12 #Accumulator content
 	sc = 12 #sequence counter
 	q_n1 = "0" #Q_n+1 initially 0
 	while(sc>0):
-		val = one[-1] + q_n1
+		val = q[-1] + q_n1
 		if(val=="01"):
-			ac = add([ac, two])
+			ac = add([ac, m])
 		if(val=="10"):
-			ac = add([ac, two_comp])
-		ac, one, q_n1 = rightShift([ac, one, q_n1])
+			ac = add([ac, m_comp])
+		ac, q, q_n1 = rightShift([ac, q, q_n1])
 		sc-=1
-	ans = ac+one
+	ans = ac+q
 	if(ac[0]=="0"):
 		final = int(ans, 2)
 	else:
@@ -145,7 +145,7 @@ def check():
 			if(j!=0):
 				a, b = divide(i, j)
 				if(i!=((j*a)+b)):
-					print("FAILED ", i, j)
+					print("DIVIDE FAILED ", i, j)
 					exit()
 				else:
 					print("DIVIDE OK", i, j)

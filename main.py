@@ -56,6 +56,7 @@ def two_compliment(num):
 			else:
 				final = "0" + final
 	return final
+
 # binary
 def binary(num):
 	if(num>=0):

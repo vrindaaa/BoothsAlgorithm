@@ -32,6 +32,7 @@ def add(numbers):
     i -= 1
 
   return r
+
 # two's compliment
 def two_compliment(num):
 	l = list(num.strip(""))
@@ -56,6 +57,7 @@ def two_compliment(num):
 			else:
 				final = "0" + final
 	return final
+
 # binary
 def binary(num):
 	if(num>=0):
@@ -86,4 +88,3 @@ def multiply(num1, num2):
 		final = -1*int(two_compliment(ans), 2)
 	return [final, ans]
 
-#print(multiply(2, 3))

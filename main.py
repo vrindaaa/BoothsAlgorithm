@@ -1,4 +1,6 @@
 def rightShift(numbers):
+  #Right Shift a number divided into two parts a and b. 
+  #Store last character of b in c.
   a,b,c = numbers
 
   newA = a[0] + a[0:-1]
@@ -8,6 +10,7 @@ def rightShift(numbers):
   return [newA,newB,newC]
 
 def leftShift(numbers):
+  #Left shift a number divided into two parts a and b.
   a,b = numbers
 
   newA = a[1:] + b[0]
@@ -16,6 +19,7 @@ def leftShift(numbers):
   return [newA, newB]
 
 def add(numbers):
+  #Function to add two binary numbers
   a,b = numbers
 
   carry = 0
@@ -42,12 +46,15 @@ def add(numbers):
 
 # two's compliment
 def two_compliment(num):
+	#Function to take 2's compliment of a number.
 	l = list(num.strip(""))
+	#inverting all the digits
 	for i in range(len(l)):
 		if(l[i]=="0"):
 			l[i] = "1"
 		else:
 			l[i] = "0"
+	#adding 1 to the number.
 	carry = "1"
 	l = l[::-1]
 	final = ""
@@ -67,6 +74,7 @@ def two_compliment(num):
 
 # binary
 def binary(num):
+	#Returning 2's compliment form of a number num.
 	if(num>=0):
 		temp = bin(num)[2:]
 		return "0"*(12 - len(temp)) + temp
@@ -74,6 +82,7 @@ def binary(num):
 		return(two_compliment(binary(-1*num)))
 
 def multiply(num1, num2):
+	#Function to multiply two numbers using Booth's Algorithm
 	q = binary(num1) #one
 	m = binary(num2) #two
 	m_comp = two_compliment(m) #two_comp
@@ -96,6 +105,7 @@ def multiply(num1, num2):
 	return [final, ans]
 
 def divide(num1, num2):
+	#Function to divide two numbers using Booth's Algorithm.
 	#num1/num2
 	rem_neg = False
 	compliment_quotient = False
@@ -140,6 +150,7 @@ def divide(num1, num2):
 	return [ans, ans2, quotient, rem]
 
 def check():
+	#Function to check correctness of Multiply and Divide Functions
 	for i in range(-1000, 1000):
 		for j in range(-1000, 1000):
 			if(j!=0):
@@ -155,6 +166,7 @@ def check():
 				print("MULTIPLY OK", i, j)
 
 print("Enter two Numbers")
+#Multiplying and dividing 2 numbers.
 a, b = map(int, input().split())
 file=open("output.txt","w+")
 file.write("Two numbers are "+str(a)+" " + str(b)+"\n")
